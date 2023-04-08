@@ -64,10 +64,12 @@ document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
   const query = searchInput.value;
   searchBooks(query);
+  event.target.reset(); // Reset the form input to an empty string
 });
+/*
 // Delay the execution of the fetch command by one second
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     searchBooks("");
   }, 1000);
-});
+});*/
