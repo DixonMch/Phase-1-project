@@ -1,72 +1,3 @@
-/*const form = document.querySelector('form');
-const searchInput = document.querySelector('#search-input');
-const bookList = document.querySelector('#book-list');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const searchTerm = searchInput.value.trim();
-  if (!searchTerm) return;
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      bookList.innerHTML = '';
-      data.items.forEach(book => {
-        const li = document.createElement('li');
-        const h2 = document.createElement('h2');
-        const p = document.createElement('p');
-        const img = document.createElement('img');
-        const button = document.createElement('button');
-
-        h2.textContent = book.volumeInfo.title;
-        p.textContent = book.volumeInfo.authors?.join(', ');
-        img.src = book.volumeInfo.imageLinks?.thumbnail;
-        button.textContent = 'Details';
-
-        li.appendChild(h2);
-        li.appendChild(p);
-        li.appendChild(img);
-        li.appendChild(button);
-        bookList.appendChild(li);
-
-        button.addEventListener('click', () => {
-          showBookDetails(book);
-        });
-      });
-    })
-    .catch(error => console.log(error));
-});
-
-function showBookDetails(book) {
-  const bookCover = document.querySelector('#book-cover');
-  const bookTitle = document.querySelector('#book-title');
-  const bookAuthor = document.querySelector('#book-author');
-  const bookPublisher = document.querySelector('#book-publisher');
-  const bookPublishedDate = document.querySelector('#book-published-date');
-  const bookDescription = document.querySelector('#book-description');
-  const bookReviews = document.querySelector('#book-reviews');
-
-  bookCover.innerHTML = `<img src="${book.volumeInfo.imageLinks?.thumbnail}"/>`;
-  bookTitle.textContent = book.volumeInfo.title;
-  bookAuthor.textContent = book.volumeInfo.authors?.join(', ');
-  bookPublisher.textContent = book.volumeInfo.publisher;
-  bookPublishedDate.textContent = book.volumeInfo.publishedDate;
-  bookDescription.textContent = book.volumeInfo.description;
-  bookReviews.innerHTML = '';
-  if (book.volumeInfo.averageRating) {
-    const rating = document.createElement('p');
-    const numRatings = document.createElement('p');
-    rating.textContent = `Average rating: ${book.volumeInfo.averageRating}/5`;
-    numRatings.textContent = `Number of ratings: ${book.volumeInfo.ratingsCount}`;
-    bookReviews.appendChild(rating);
-    bookReviews.appendChild(numRatings);
-  } else {
-    const noReviews = document.createElement('p');
-    noReviews.textContent = 'No ratings or reviews available';
-    bookReviews.appendChild(noReviews);
-  }
-}*/
 
 const searchInput = document.getElementById("search-input");
 const bookList = document.getElementById("book-list");
@@ -133,4 +64,10 @@ document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
   const query = searchInput.value;
   searchBooks(query);
+});
+// Delay the execution of the fetch command by one second
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    searchBooks("");
+  }, 1000);
 });
